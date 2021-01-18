@@ -8,9 +8,10 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(50),
+    marginRight: theme.spacing(50),
     width: '25ch',
+    marginTop: theme.spacing(1)
   },
 }));
 
@@ -26,6 +27,13 @@ export default function UsernameField() {
           id="margin-dense"
           className={classes.textField}
           helperText="Enter your Username"
+          margin=""
+        />
+        <TextField
+          label="Password"
+          id="margin-dense"
+          className={classes.textField}
+          helperText="Enter your Password"
           margin=""
         />
       </div>
