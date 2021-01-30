@@ -7,15 +7,34 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import ButtonAppBar from "./components/buttonappbar";
-import logIn from "./components/usernamefield";
 import UsernameField from "./components/usernamefield";
-function App() {
-  return (
-    <div className="App">
-      <ButtonAppBar />
-      <UsernameField />
-    </div>
-  );
+
+import React, { Component } from "react";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false,
+    };
+  }
+  render() {
+    if (this.state.loggedIn) {
+      return (
+        <div className="App">
+          <ButtonAppBar />
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <ButtonAppBar />
+          <UsernameField />
+        </div>
+      );
+    }
+  }
 }
 
 export default App;

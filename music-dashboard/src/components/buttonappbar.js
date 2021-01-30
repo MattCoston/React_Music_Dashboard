@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
-export default function ButtonAppBar() {
+function SetState() {
+  const [logIn, setLogIn] = useState(false);
+}
+function ButtonAppBar() {
   const classes = useStyles();
 
   return (
@@ -37,9 +39,13 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Login Page
           </Typography>
-          <Button color="inherit">Login</Button>
+          <div onClick={!useState}>
+            <Button color="inherit">Login</Button>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+export default ButtonAppBar;
