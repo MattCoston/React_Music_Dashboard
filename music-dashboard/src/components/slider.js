@@ -30,7 +30,7 @@ function DiscreteSlider() {
         step={10}
         marks
         min={0}
-        max={100}
+        max={100000}
       />
     </div>
   );
