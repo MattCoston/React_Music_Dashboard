@@ -34,6 +34,7 @@ class App extends Component {
           <Switches />
           <Slider />
           <ControlledOpenSelect />
+          <button onClick={this.changeState}>LOG OUT</button>
         </div>
       );
     } else {
