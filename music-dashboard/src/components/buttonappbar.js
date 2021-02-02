@@ -25,6 +25,8 @@ function SetState() {
 function ButtonAppBar() {
   const classes = useStyles();
 
+  // function for displaying text
+
   return (
     <div className={classes.root}>
       <AppBar position="static">

@@ -15,13 +15,17 @@ import ControlledOpenSelect from "./components/quality";
 import React, { Component } from "react";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    loggedIn: false,
+    toggle: false,
+    quality: false,
+    slider: false,
+  };
+  changeState = () => {
+    this.setState({ loggedIn: !this.state.loggedIn });
+    console.log(this.state.loggedIn);
+  };
 
-    this.state = {
-      loggedIn: true,
-    };
-  }
   render() {
     if (this.state.loggedIn) {
       return (
@@ -37,6 +41,7 @@ class App extends Component {
         <div className="App">
           <ButtonAppBar />
           <UsernameField />
+          <button onClick={this.changeState}>LOGIN</button>
         </div>
       );
     }
