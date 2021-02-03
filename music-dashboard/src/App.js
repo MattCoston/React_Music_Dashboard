@@ -8,7 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import ButtonAppBar from "./components/buttonappbar";
 import UsernameField from "./components/usernamefield";
-import Switches from "./components/switches";
+import Switch from "@material-ui/core/Switch";
 import Slider from "./components/slider";
 import ControlledOpenSelect from "./components/quality";
 
@@ -26,14 +26,46 @@ class App extends Component {
     console.log(this.state.loggedIn);
   };
 
+  handleChildren = (x) => {
+    const k = Object.keys(x)[0];
+    const newState = {};
+    newState[k] = x[k];
+    this.setState(newState);
+  };
+
+  toggle = () => {
+    this.setState({ toggle: !this.state.toggle });
+  };
   render() {
     if (this.state.loggedIn) {
       return (
         <div className="App">
           <ButtonAppBar />
-          <Switches />
-          <Slider />
+          <Switch onClick={this.toggle} />
+          <Slider parentFunc={this.handleChildren} />
           <ControlledOpenSelect />
+          <div>
+            {this.state.toggle ? (
+              <p>
+                Your application is offline. You won't be able to share or
+                stream music to other devices.
+              </p>
+            ) : (
+              <p></p>
+            )}
+            {this.state.slider ? (
+              <p>
+                Listening to music at a high volume could cause long-term
+                hearing loss.
+              </p>
+            ) : (
+              <p></p>
+            )}
+            <p>
+              Music quality is degraded. Increase quality if your connection
+              allows it.
+            </p>
+          </div>
           <button onClick={this.changeState}>LOG OUT</button>
         </div>
       );

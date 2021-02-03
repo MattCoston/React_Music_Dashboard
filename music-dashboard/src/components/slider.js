@@ -6,7 +6,6 @@ import Slider from "@material-ui/core/Slider";
 const useStyles = makeStyles({
   root: {
     width: 300,
-    height: 200,
   },
 });
 
@@ -14,9 +13,19 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-function DiscreteSlider() {
+export default function DiscreteSlider(props) {
   const classes = useStyles();
+  const [value, setValue] = React.useState(30);
 
+  const sliderChange = (e, newValue) => {
+    if (value >= 80) {
+      props.parentFunc({ slider: true });
+    }
+    if (value < 80) {
+      props.parentFunc({ slider: false });
+    }
+    setValue(newValue);
+  };
   return (
     <div className={classes.root}>
       <Typography id="discrete-slider" gutterBottom>
@@ -29,11 +38,10 @@ function DiscreteSlider() {
         valueLabelDisplay="auto"
         step={10}
         marks
-        min={0}
-        max={100000}
+        min={10}
+        max={100}
+        onChange={sliderChange}
       />
     </div>
   );
 }
-
-export default Slider;
